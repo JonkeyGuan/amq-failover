@@ -40,7 +40,7 @@ public class ProducerApplication implements CommandLineRunner {
 
 	public void send(String msg) {
 
-		log.info("sent：{}", msg);
+		log.info("sent: {}", msg);
 
 		jmsTemplate.send(queueName, new MessageCreator() {
 			@Override

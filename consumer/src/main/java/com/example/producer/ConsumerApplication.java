@@ -22,7 +22,7 @@ public class ConsumerApplication {
 
 	@JmsListener(destination = "${destination.queue.name}")
 	public void recive(String content) {
-		log.info("recieved：{}", content);
+		log.info("recieved: {}", content);
 	}
 
 }
