@@ -1,9 +1,9 @@
 
 spring:
-  activemq:
-    broker-url: ${BROKER_URL, failover(tcp://localhost:61616,tcp://localhost:61616)}
-    user: ${ACTIVEMQ_USER, admin}
-    password: ${ACTIVEMQ_PASSWORD, admin} 
+  artemis:
+    brokerUrl: ${BROKER_URL:(tcp://localhost:61616,tcp://localhost:61616)}
+    user: ${ARTEMIS_USER:admin}
+    password: ${ARTEMIS_PASSWORD:admin} 
 
 destination.queue.name: demoQueue
 
