@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: broker-master-amq-tcp-node-port
+  labels:
+    application: broker-master
+  annotations:
+    description: The broker's OpenWire port.
+    service.alpha.openshift.io/dependencies: >-
+      [{"name": "broker-master-amq-amqp", "kind": "Service"},{"name":
+      "broker-master-amq-mqtt", "kind": "Service"},{"name":
+      "broker-master-amq-stomp", "kind": "Service"}]
+spec:
+  ports:
+    - protocol: TCP
+      port: 5672
+      targetPort: 5672
+      nodePort: 31234
+  selector:
+    deploymentConfig: broker-master-amq
+  type: NodePort

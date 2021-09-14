@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: broker-slave-amq-tcp-node-port
+  labels:
+    application: broker-slave
+  annotations:
+    description: The broker's OpenWire port.
+    service.alpha.openshift.io/dependencies: >-
+      [{"name": "broker-slave-amq-amqp", "kind": "Service"},{"name":
+      "broker-slave-amq-mqtt", "kind": "Service"},{"name":
+      "broker-slave-amq-stomp", "kind": "Service"}]
+spec:
+  ports:
+    - protocol: TCP
+      port: 5672
+      targetPort: 5672
+      nodePort: 31235
+  selector:
+    deploymentConfig: broker-slave-amq
+  type: NodePort

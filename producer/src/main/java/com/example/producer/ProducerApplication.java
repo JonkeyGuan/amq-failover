@@ -12,12 +12,12 @@ import org.springframework.jms.core.JmsTemplate;
 
 @EnableJms
 @SpringBootApplication
-public class ProducerApplication  implements CommandLineRunner{
+public class ProducerApplication implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(ProducerApplication.class);
 
 	@Autowired
-    public JmsTemplate jmsTemplate;
+	public JmsTemplate jmsTemplate;
 
 	@Value("${destination.queue.name}")
 	String queueName;
@@ -25,7 +25,7 @@ public class ProducerApplication  implements CommandLineRunner{
 	public static void main(String[] args) {
 		SpringApplication.run(ProducerApplication.class, args);
 	}
-	
+
 	@Override
 	public void run(String... args) throws Exception {
 		int i = 1;
