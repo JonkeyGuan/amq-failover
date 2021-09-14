@@ -1,9 +1,11 @@
-
-spring:
-  artemis:
-    brokerUrl: ${BROKER_URL:(tcp://localhost:61616,tcp://localhost:61616)}
-    user: ${ARTEMIS_USER:admin}
-    password: ${ARTEMIS_PASSWORD:admin} 
+amqphub:
+  amqp10jms:
+    remote-url: ${BROKER_URL:failover:(amqp://localhost:5672,amqp://localhost:5672)}
+    user: ${AMQ_USER:admin}
+    password: ${AMQ_PASSWORD:admin}
+    connectionCheckInterval: 1000
+    pool:
+      enabled: true
+      maxConnections: 1
 
 destination.queue.name: demoQueue
-
