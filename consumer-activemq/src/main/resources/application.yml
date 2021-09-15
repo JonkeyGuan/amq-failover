@@ -1,0 +1,10 @@
+spring:
+  activemq:
+    broker-url: ${BROKER_URL:failover:(tcp://192.168.2.201:31234,tcp://192.168.2.201:31235)}
+    user: ${AMQ_USER:admin}
+    password: ${AMQ_PASSWORD:admin}
+    pool:
+      enabled: true
+      max-connections: 1
+
+destination.queue.name: demoQueue
